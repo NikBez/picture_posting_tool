@@ -8,6 +8,7 @@ def main():
     bot = telegram.Bot(token = os.getenv('TELEGRAM_BOT_TOKEN') )
 
     bot.send_message(text='Hi John!', chat_id='@production_marketplace')
+    bot.send_photo(chat_id='@production_marketplace', photo=open('1.png', 'rb'))
 
 
 
