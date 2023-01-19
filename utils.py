@@ -15,7 +15,7 @@ def save_image_by_link(links, save_path):
         response.raise_for_status()
         picture = response.content
         extention = get_image_extention(link)
-        with open(f"{save_path}/space-{index}{extention}", "wb") as pic_file:
+        with open(os.path.join(save_path, f"space-{index}{extention}"), "wb") as pic_file:
             pic_file.write(picture)
 
 
@@ -27,13 +27,13 @@ def get_image_extention(image_link):
 
 def get_photos():
 
-    extention_allowed = ('.jpg', '.png', '.jpeg')
+    allowed_extentions = ('.jpg', '.png', '.jpeg')
     photo_pathes = []
 
-    for root, dirs, files in os.walk("./images", topdown=False):
+    for root, dirs, files in os.walk(Path.cwd()/"images", topdown=False):
         for name in files:
             file_name, ext = os.path.splitext(name)
-            if ext in extention_allowed:
+            if ext in allowed_extentions:
                 photo_pathes.append(os.path.join(root, name))
 
     shuffle(photo_pathes)
