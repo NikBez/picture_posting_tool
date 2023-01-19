@@ -3,8 +3,9 @@ import os
 import requests
 from dotenv import load_dotenv
 from utils import save_image_by_link
+from pathlib import Path
 
-default_images_path = "images/spaceX/"
+default_images_path = Path.cwd()/"images/spaceX/"
 
 def main():
 
@@ -15,7 +16,7 @@ def main():
     parser.add_argument('-i', '--id', default='latest', help="SpaceX flight ID")
     args = parser.parse_args()
 
-    spacex_api_url = os.environ["SPACEX_API_URL"]
+    spacex_api_url = os.getenv("SPACEX_API_URL", default='https://api.spacexdata.com/v5/launches/')
 
     response = requests.get(f"{spacex_api_url}{args.id}")
     response.raise_for_status()

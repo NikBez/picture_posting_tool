@@ -9,12 +9,13 @@ def main():
 
     load_dotenv()
     photo_pathes = get_photos()
-    gap = int(os.getenv("POST_GAP"))
-    bot = telegram.Bot(token=os.getenv('TELEGRAM_BOT_TOKEN'))
+    gap = int(os.getenv("POST_GAP", default=14400))
+    bot = telegram.Bot(token=os.environ['TELEGRAM_BOT_TOKEN'])
     while True:
         shuffle(photo_pathes)
         for pic_path in photo_pathes:
-            bot.send_photo(chat_id=os.getenv('TELEGRAM_CHAT_ID'), photo=open(pic_path, 'rb'))
+            with open(pic_path, 'rb') as pic:
+                bot.send_photo(chat_id=os.environ['TELEGRAM_CHAT_ID'], photo=pic)
             time.sleep(gap)
 
 
