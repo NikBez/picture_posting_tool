@@ -1,6 +1,6 @@
 # Space picture downloader
 
-Tool allows to download space photos from few souces using API
+Tool allows to download space photos from few sources using API
 
 ## Install
 ````
@@ -13,25 +13,17 @@ Tool allows to download space photos from few souces using API
 NASA_API_TOKEN=[YOUR TOKEN] 
 TELEGRAM_BOT_TOKEN=[YOUR TOKEN]
 TELEGRAM_CHAT_ID=[YOU ID]
+#IMAGES_ROOT_PATH=[PATH]
 
-SPACEX_API_URL=https://api.spacexdata.com/v5/launches/  
-NASA_API_URL=https://api.nasa.gov/planetary/apod/  
-NASA_EPIC_DATA_URL=https://api.nasa.gov/EPIC/api/natural/images
-NASA_EPIC_PICTURE_URL=https://epic.gsfc.nasa.gov/archive/natural/
 POST_GAP=14400
 ```
 
 ## Settings
-`POST_GAP` - gap between posts in infitity mode (in seconds, default 4 hours)   
+`POST_GAP` - gap between posts in infinity mode (in seconds, default 4 hours)   
 `TELEGRAM_CHAT_ID` - id of Telegram group to work with  
 `TELEGRAM_BOT_TOKEN` - pass you Telegram bot token here  
 `NASA_API_TOKEN` - generated API token from Nasa  
-`SPACEX_API_URL` - generated API token from SpaceX  
-`NASA_API_URL` - API URL for Nasa database  
-`NASA_EPIC_DATA_URL` - API URL for Epic-Nasa database (require for parse metadata of pics)  
-`NASA_EPIC_PICTURE_URL` - API URL for Epic-Nasa database (for getting images)
-
-
+`IMAGES_ROOT_PATH`= - Your custom path to folder with images (default is: ./images)
 
 ## How to run
 This script will download photos with [epic.gsfc.nasa](https://epic.gsfc.nasa.gov/):
